@@ -117,5 +117,3 @@ if __name__ == "__main__":
         s1 = soundhandle.voiceSound(message)
         s1.play()
 
-""" Loop needs a wait delay, and it needs a sound output using the speech stuff"""
-
