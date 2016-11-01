@@ -110,10 +110,12 @@ if __name__ == "__main__":
     nav_node = NavNode()
 
     for x in points:
-        nav_node.goto_point()
+        current = points[x]
+        nav_node.goto_point(current[0], current[1], current[2])
+        message = "Happy hallidays Professor " + current[3]
+        rospy.wait(5)
+        s1 = soundhandle.voiceSound(message)
+        s1.play()
+
 """ Loop needs a wait delay, and it needs a sound output using the speech stuff"""
-    if len(sys.argv) == 3:
-        nav_node.goto_point(float(sys.argv[1]), float(sys.argv[2]))
-    else:
-        nav_node.goto_point(float(sys.argv[1]), float(sys.argv[2]),
-                            float(sys.argv[3]))
+
