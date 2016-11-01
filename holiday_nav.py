@@ -92,6 +92,8 @@ class NavNode(object):
 
 
 if __name__ == "__main__":
+
+    # Points are hardcoded for the location of each professors office
     p1 = (1,2,40, 'Bernstein')
     p2 = (1,2,40, 'Bowers')
     p3 = (1,2,40, 'Sprague')
@@ -99,6 +101,7 @@ if __name__ == "__main__":
     p5 = (1,2,40, 'Fox')
     p6 = (1,2,40, 'Simmons')
 
+    # Points are added to an array
     points = []
     points.append(p1)
     points.append(p2)
@@ -111,9 +114,14 @@ if __name__ == "__main__":
 
     for x in points:
         current = points[x]
+        # The current Professor Tuple is accessed
         nav_node.goto_point(current[0], current[1], current[2])
         message = "Happy hallidays Professor " + current[3]
-        rospy.wait(5)
+        # The script waits for the robot to arrive or fail
+        nav_node.wait_for_result()
+        rospy.wait(3)
         s1 = soundhandle.voiceSound(message)
         s1.play()
+
+""" Loop needs a wait delay, and it needs a sound output using the speech stuff"""
 
