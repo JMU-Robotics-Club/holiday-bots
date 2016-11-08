@@ -113,7 +113,7 @@ if __name__ == "__main__":
     nav_node = NavNode()
 
     for x in points:
-        current = points[x]
+        current = x
         # The current Professor Tuple is accessed
         nav_node.goto_point(current[0], current[1], current[2])
         message = "Happy hallidays Professor " + current[3]
