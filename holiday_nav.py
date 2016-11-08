@@ -15,6 +15,7 @@ import sys
 import rospy
 import actionlib
 import tf
+import time
 
 from sound_play.libsoundplay import SoundClient
 
@@ -28,7 +29,7 @@ class NavNode(object):
 
         rospy.init_node('halloween_node')
 
-        soundhandle = SoundClient()
+        
 
         self.ac = actionlib.SimpleActionClient("move_base", MoveBaseAction)
 
@@ -111,15 +112,16 @@ if __name__ == "__main__":
     points.append(p6)
 
     nav_node = NavNode()
+    soundhandle = SoundClient()
 
     for x in points:
         current = x
         # The current Professor Tuple is accessed
         nav_node.goto_point(current[0], current[1], current[2])
-        message = "Happy hallidays Professor " + current[3]
+        message = "Happy holidays Professor " + current[3]
         # The script waits for the robot to arrive or fail
-        nav_node.wait_for_result()
-        rospy.wait(3)
+        nav_node.ac.wait_for_result()
+        time.sleep(10)
         s1 = soundhandle.voiceSound(message)
         s1.play()
 
