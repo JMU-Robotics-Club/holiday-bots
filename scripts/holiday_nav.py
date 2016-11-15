@@ -113,7 +113,7 @@ if __name__ == "__main__":
 
     nav_node = NavNode()
     soundhandle = SoundClient()
-
+    
     for x in points:
         current = x
         # The current Professor Tuple is accessed
