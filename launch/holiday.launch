@@ -7,10 +7,12 @@
 
 
 <node name="soundplay_node" pkg="sound_play" type="soundplay_node.py"/>
+  <arg name="map_file" default="$(env TURTLEBOT_MAP_FILE)"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+<include file="$(find turtlebot_navigation)/launch/includes/amcl.launch.xml"/>
 
 
-
-  <include file="$(find turtlebot_navigation)/launch/includes/gmapping.launch.xml"/>
+ 
   <include file="$(find turtlebot_navigation)/launch/includes/move_base.launch.xml"/>
 
 
